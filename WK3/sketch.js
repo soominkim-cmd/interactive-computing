@@ -1,12 +1,20 @@
 function setup() {
-  createCanvas(1200, 1200);
+  const container = document.getElementById('sketch-holder');
+  const size = min(windowWidth, windowHeight);
+  const canvas = createCanvas(size, size);
+  canvas.parent('sketch-holder');
+}
+
+function windowResized() {
+  const size = min(windowWidth, windowHeight);
+  resizeCanvas(size, size);
 }
 
 function draw() {
   background(255);
-  noStroke()
-  fill('#F5E2C8')
-  rect(0,0,600)
+  noStroke();
+  fill('#F5E2C8');
+  rect(0,0,width/2, height/2);
 
   fill('#D88373')
   ellipse(300,300,600)
