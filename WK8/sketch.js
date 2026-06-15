@@ -1,3 +1,4 @@
+// Version: iframe-fix-v2
 let img;
 let flapWidth = 8; 
 let range = 150;   
