@@ -15,10 +15,13 @@ function toggleMenu() {
 // 배경 업데이트 함수
 function loadBackgroundPreview(wk) {
   const preview = document.getElementById('background-preview');
-  // 현재 URL 기준으로 경로 계산
+  // GitHub Pages 및 로컬 모두 지원하도록 경로 설정
   const currentPath = window.location.pathname;
-  const basePath = currentPath.substring(0, currentPath.lastIndexOf('/'));
-  const path = `${basePath}/../WK${wk}/index.html`;
+  
+  // /interactive-computing/WK8/ 형태일 때 /interactive-computing/WK2/
+  // /WK8/ 형태일 때 /WK2/
+  let basePath = currentPath.substring(0, currentPath.lastIndexOf('WK'));
+  let path = `${basePath}WK${wk}/index.html`;
   
   // 기존 iframe 제거
   const existingIframe = preview.querySelector('iframe');
@@ -43,7 +46,8 @@ function loadBackgroundPreview(wk) {
 }
 
 function preload() {
-  img = loadImage('image.PNG');
+  // image.PNG 파일이 없으면 생성하지 않음
+  // img = loadImage('image.PNG');
 }
 
 function setup() {
@@ -108,10 +112,13 @@ function windowResized() {
 function draw() {
   background(0);
 
-  push(); 
-  tint(255, 100); 
-  image(img, 0, 0, width, height);
-  pop();
+  // image가 있으면 표시
+  if (img) {
+    push(); 
+    tint(255, 100); 
+    image(img, 0, 0, width, height);
+    pop();
+  }
   
   noTint();
 
@@ -130,9 +137,14 @@ class Flap {
     this.rad = 0;
     this.s = 1.0;
     
-    let ix = floor(map(this.originX, 0, width, 0, img.width));
-    let iy = floor(map(this.originY, 0, height, 0, img.height));
-    this.c = img.get(ix, iy);
+    // image가 있으면 색상 가져오기, 없으면 흰색
+    if (img) {
+      let ix = floor(map(this.originX, 0, width, 0, img.width));
+      let iy = floor(map(this.originY, 0, height, 0, img.height));
+      this.c = img.get(ix, iy);
+    } else {
+      this.c = color(255); // 기본 흰색
+    }
   }
 
   update() {
