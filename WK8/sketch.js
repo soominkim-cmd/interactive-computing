@@ -13,38 +13,6 @@ function toggleMenu() {
 }
 
 // 배경 업데이트 함수
-function loadBackgroundPreview(wk) {
-  const preview = document.getElementById('background-preview');
-  // GitHub Pages 및 로컬 모두 지원하도록 경로 설정
-  const currentPath = window.location.pathname;
-  
-  // /interactive-computing/WK8/ 형태일 때 /interactive-computing/WK2/
-  // /WK8/ 형태일 때 /WK2/
-  let basePath = currentPath.substring(0, currentPath.lastIndexOf('WK'));
-  let path = `${basePath}WK${wk}/index.html`;
-  
-  // 기존 iframe 제거
-  const existingIframe = preview.querySelector('iframe');
-  if (existingIframe) {
-    existingIframe.remove();
-  }
-  
-  // 새 iframe 생성
-  const iframe = document.createElement('iframe');
-  iframe.src = path;
-  iframe.style.width = '100%';
-  iframe.style.height = '100%';
-  iframe.style.border = 'none';
-  iframe.style.backgroundColor = '#000';
-  preview.appendChild(iframe);
-  
-  // 메뉴 활성 상태 업데이트
-  document.querySelectorAll('.menu-list li').forEach(item => {
-    item.classList.remove('active');
-  });
-  document.querySelector(`[data-wk="${wk}"]`).classList.add('active');
-}
-
 function preload() {
   // image.PNG 파일이 없으면 생성하지 않음
   // img = loadImage('image.PNG');
@@ -65,16 +33,9 @@ function setup() {
   document.querySelectorAll('.menu-list li').forEach(item => {
     item.addEventListener('click', () => {
       const wk = item.dataset.wk;
-      loadBackgroundPreview(wk);
-      // 메뉴 닫기
-      if (document.getElementById('sidebar').classList.contains('active')) {
-        toggleMenu();
-      }
+      window.location.href = `${window.location.origin}${window.location.pathname.replace(/\/WK8\/?$/, '')}/WK${wk}/`;
     });
   });
-  
-  // 기본 배경으로 WK2 로드
-  loadBackgroundPreview(2);
   
   cols = ceil(width / (flapWidth * 1.5));
   rows = ceil(height / (flapWidth * 1.5));
