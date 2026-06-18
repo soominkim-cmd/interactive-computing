@@ -17,92 +17,83 @@ function draw() {
   rect(0,0,width/2, height/2);
 
   fill('#D88373')
-  ellipse(300,300,600)
+  ellipse(width/2, height/2, width*0.6)
   fill('#17255A')
-  ellipse(300, 300, 200)
+  ellipse(width/2, height/2, width*0.2)
 
   strokeCap(SQUARE)
   stroke('#BD1E1E')
-  strokeWeight(230)
-  arc(300, 300, 258, 258, PI, PI*3/2)
+  strokeWeight(width*0.23)
+  arc(width/2, height/2, width*0.258, width*0.258, PI, PI*3/2)
 
   noFill()
   strokeCap(SQUARE)
   stroke('#00408E')
-  strokeWeight(50)
-  arc(300, 300, 350, 350, 0 , PI*1/2)
+  strokeWeight(width*0.05)
+  arc(width/2, height/2, width*0.35, width*0.35, 0 , PI*1/2)
 
   noStroke()
   fill('#BD1E1E')
-  triangle(300, 300, 200, 300, 300, 200)
-
-  
-
+  triangle(width/2, height/2, width/2-width*0.1, height/2, width/2, height/2-width*0.1)
 
   noStroke()
   fill('#BCD4DE')
-  rect(600,0,600)
+  rect(width/2, 0, width/2, height/2)
 
   fill('#A5CCD1')
-  triangle(1200,0, 900, 300, 1030, 430)
-  triangle(770, 168,900, 300, 600, 600)
+  triangle(width, 0, width*0.75, height*0.25, width*0.858, height*0.357)
+  triangle(width*0.641, height*0.14, width*0.75, height*0.25, width/2, width/2)
 
   fill('#A0B0BF')
-  triangle(770, 168, 718, 118, 839, 0 )
-  triangle(718, 118, 667, 66, 600, 235)
-  triangle(964, 600, 1082, 482, 1030, 430)
-  triangle(1082, 482,1133, 534, 1200, 365, 1109, 600)
+  triangle(width*0.642, height*0.14, width*0.598, height*0.098, width*0.699, 0 )
+  triangle(width*0.598, height*0.098, width*0.556, height*0.055, width*0.5, height*0.196)
+  triangle(width*0.803, height*0.5, width*0.902, height*0.402, width*0.858, height*0.357)
+  triangle(width*0.902, height*0.402, width*0.944, height*0.445, width, height*0.304, width*0.924, height*0.5)
   fill('#949BA0')
-  triangle(1133, 534, 1154, 554, 1109, 600)
-  triangle(1154, 554, 1174, 574, 1200, 509)
-  triangle(667, 66, 692, 0, 646.5, 47.5 )
-  triangle(646.5, 47.5, 600, 98, 627, 27.5)
-
+  triangle(width*0.944, height*0.445, width*0.962, height*0.462, width*0.924, height*0.5)
+  triangle(width*0.962, height*0.462, width*0.978, height*0.478, width, height*0.424)
+  triangle(width*0.556, height*0.055, width*0.577, 0, width*0.539, height*0.040)
+  triangle(width*0.539, height*0.040, width*0.5, height*0.082, width*0.523, height*0.023)
 
   fill('#000000')
-  rect(0,600,600)
+  rect(0, height/2, width/2, height/2)
 
   fill('#381a84')
-  ellipse(150, 750, 300)
-  rect(0, 750, 300, 450)
-  rect(300, 968, 300, 230)
-  ellipse(450+75, 893+75, 150)
+  ellipse(width*0.125, height*0.625, width*0.25)
+  rect(0, height*0.625, width*0.25, height*0.375)
+  rect(width*0.25, height*0.807, width*0.25, height*0.192)
+  ellipse(width*0.438, height*0.744, width*0.125)
 
   fill('#000000')
-  ellipse(450+75-150, 893+75, 150)
+  ellipse(width*0.313, height*0.744, width*0.125)
   
   fill('#31f3c2')
-  ellipse(337+75/2, 930+75/2, 75)
-
-
-
+  ellipse(width*0.406, height*0.775, width*0.063)
 
   fill('#D7CF07')
-  rect(600,600,600)
+  rect(width/2, height/2, width/2, height/2)
 
-	
-  let radialGradient = drawingContext.createRadialGradient(860, 947, 20, 860, 947, 300);
+  let radialGradient = drawingContext.createRadialGradient(width*0.717, height*0.789, width*0.017, width*0.717, height*0.789, width*0.25);
   radialGradient.addColorStop(0, '#000000');
   radialGradient.addColorStop(1, '#A40606');
 
   drawingContext.fillStyle = radialGradient;
 
-
   beginShape();
-  vertex(868.5,642 )
-  vertex(814,861)
-  vertex(621,820.5 )
-  vertex(807, 956.5 )
-  vertex(691.5,1000 )
-  vertex(807,987.5 )
-  vertex(792,1162 )
-  vertex(878,1012 )
-  vertex(1131,1174 )
-  vertex(923,956.5 )
-  vertex(1181.5,843.5)
-  vertex(938,902)
-  vertex(959.5,820.5)
-  vertex(887.5,902 )
+  vertex(width*0.724, height*0.535)
+  vertex(width*0.678, height*0.718)
+  vertex(width*0.518, height*0.684)
+  vertex(width*0.673, height*0.797)
+  vertex(width*0.576, height*0.833)
+  vertex(width*0.673, height*0.823)
+  vertex(width*0.66, height*0.968)
+  vertex(width*0.732, height*0.843)
+  vertex(width*0.942, height*0.978)
+  vertex(width*0.769, height*0.797)
+  vertex(width*0.984, height*0.703)
+  vertex(width*0.782, height*0.752)
+  vertex(width*0.8, height*0.684)
+  vertex(width*0.729, height*0.752)
   endShape(CLOSE)
 
 }

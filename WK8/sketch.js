@@ -48,8 +48,7 @@ function loadBackgroundPreview(wk) {
 }
 
 function preload() {
-  // image.PNG 파일이 없으면 생성하지 않음
-  // img = loadImage('image.PNG');
+  img = loadImage('image.jpg');
 }
 
 function setup() {
