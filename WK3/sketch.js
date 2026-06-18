@@ -1,12 +1,12 @@
 function setup() {
   const container = document.getElementById('sketch-holder');
-  const size = min(windowWidth, windowHeight);
+  const size = min(windowWidth, windowHeight) / 2;
   const canvas = createCanvas(size, size);
   canvas.parent('sketch-holder');
 }
 
 function windowResized() {
-  const size = min(windowWidth, windowHeight);
+  const size = min(windowWidth, windowHeight) / 2;
   resizeCanvas(size, size);
 }
 

@@ -21,24 +21,32 @@ function loadBackgroundPreview(wk) {
   let basePath = currentPath.substring(0, currentPath.lastIndexOf('WK'));
   let path = `${basePath}WK${wk}/index.html`;
   
-  // 기존 iframe 제거
-  const existingIframe = preview.querySelector('iframe');
-  if (existingIframe) {
-    existingIframe.remove();
+  // 기존 iframe 또는 이미지 제거
+  preview.innerHTML = '';
+
+  if (wk === 8) {
+    const imgElement = document.createElement('img');
+    imgElement.src = 'image.jpg';
+    imgElement.alt = 'WK8 파도 작품';
+    imgElement.style.width = '100%';
+    imgElement.style.height = '100%';
+    imgElement.style.objectFit = 'contain';
+    imgElement.style.display = 'block';
+    imgElement.style.backgroundColor = '#000';
+    preview.appendChild(imgElement);
+  } else {
+    const iframe = document.createElement('iframe');
+    iframe.src = path;
+    iframe.sandbox.add('allow-same-origin');
+    iframe.sandbox.add('allow-scripts');
+    iframe.sandbox.add('allow-forms');
+    iframe.sandbox.add('allow-popups');
+    iframe.style.width = '100%';
+    iframe.style.height = '100%';
+    iframe.style.border = 'none';
+    iframe.style.backgroundColor = '#000';
+    preview.appendChild(iframe);
   }
-  
-  // 새 iframe 생성 (sandbox 속성으로 스크립트 실행 허용)
-  const iframe = document.createElement('iframe');
-  iframe.src = path;
-  iframe.sandbox.add('allow-same-origin');
-  iframe.sandbox.add('allow-scripts');
-  iframe.sandbox.add('allow-forms');
-  iframe.sandbox.add('allow-popups');
-  iframe.style.width = '100%';
-  iframe.style.height = '100%';
-  iframe.style.border = 'none';
-  iframe.style.backgroundColor = '#000';
-  preview.appendChild(iframe);
   
   // 메뉴 활성 상태 업데이트
   document.querySelectorAll('.menu-list li').forEach(item => {
